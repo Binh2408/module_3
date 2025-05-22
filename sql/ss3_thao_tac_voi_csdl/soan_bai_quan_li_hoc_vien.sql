@@ -118,6 +118,30 @@ JOIN class c ON s.class_id = c.id
 WHERE c.name = 'c1121g1'
 ORDER BY s.name ASC;
 
+-- -------------------------------------------------
+-- + Hiện thị danh sách các lớp có học viên theo học và số lượng học viên của mỗi lớp
+select c.name as ten_lop, count(s.id) as so_luong from class c
+join student s on s.class_id = c.id
+group by c.id,c.name;
 
+-- + Tính điểm lớn nhất của mỗi các lớp
+select c.name as ten_lop, max(s.point) as diem_lon_nhat from class c
+join student s on s.class_id = c.id
+group by c.id, c.name;
+-- + Tình điểm trung bình của từng lớp
+select c.name as ten_lop, avg(s.point) as diem_lon_nhat from class c
+join student s on s.class_id = c.id
+group by c.id, c.name; 
+-- + Lấy ra toàn bộ tên và ngày sinh các instructor và student ở CodeGym.
+select name, birthday from instructor 
+union
+select name, birthday from student; 
+-- + Lấy ra top 3 học viên có điểm cao nhất của trung tâm.
+select * from student
+order by `point` desc
+limit 3;
+-- + Lấy ra các học viên có điểm số là cao nhất của trung tâm.
+select * from student
+where point=(select max(point) from student);
 
 
