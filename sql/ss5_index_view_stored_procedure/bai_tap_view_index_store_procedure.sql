@@ -62,44 +62,44 @@ DELIMITER ;
 CALL pro_infor();
 -- Tạo store procedure thêm một sản phẩm mới
 DELIMITER //
-CREATE PROCEDURE add_product(
-    IN p_code VARCHAR(45),
-    IN p_name VARCHAR(45),
-    IN p_price DOUBLE,
-    IN p_amount INT,
-    IN p_description VARCHAR(100),
-    IN p_status BOOLEAN
+create procedure add_product(
+    IN p_code varchar(45),
+    IN p_name varchar(45),
+    IN p_price double,
+    IN p_amount int,
+    IN p_description varchar(100),
+    IN p_status boolean
 )
-BEGIN
-    INSERT INTO products(product_code, product_name, product_price, product_amount, product_description, product_status)
-    VALUES (p_code, p_name, p_price, p_amount, p_description, p_status);
-END //
+begin
+    insert into products(product_code, product_name, product_price, product_amount, product_description, product_status)
+    values (p_code, p_name, p_price, p_amount, p_description, p_status);
+end //
 DELIMITER ;
 
 CALL add_product('PRD006', 'iPhone 14', 999.99, 30, 'Điện thoại Apple cao cấp', TRUE);
 
 -- Tạo store procedure sửa thông tin sản phẩm theo id
 DELIMITER //
-CREATE PROCEDURE update_product_by_id(
-    IN p_id INT,
-    IN p_code VARCHAR(45),
-    IN p_name VARCHAR(45),
-    IN p_price DOUBLE,
-    IN p_amount INT,
-    IN p_description VARCHAR(100),
-    IN p_status BOOLEAN
+create procedure update_product_by_id(
+    IN p_id int,
+    IN p_code varchar(45),
+    IN p_name varchar(45),
+    IN p_price double,
+    IN p_amount int,
+    IN p_description varchar(100),
+    IN p_status boolean
 )
-BEGIN
-    UPDATE products
-    SET
+begin
+    update products
+    set
         product_code = p_code,
         product_name = p_name,
         product_price = p_price,
         product_amount = p_amount,
         product_description = p_description,
         product_status = p_status
-    WHERE id = p_id;
-END //
+    where id = p_id;
+end //
 DELIMITER ;
 CALL update_product_by_id(
     1,
