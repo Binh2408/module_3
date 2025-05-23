@@ -113,9 +113,9 @@ CALL update_product_by_id(
 
 -- Tạo store procedure xoá sản phẩm theo id
 DELIMITER //
-CREATE PROCEDURE delete_product_by_id(IN p_id INT)
-BEGIN
-    DELETE FROM products WHERE id = p_id;
-END //
+create procedure delete_product_by_id(IN p_id int)
+begin
+    delete from products where id = p_id;
+end //
 DELIMITER ;
 CALL delete_product_by_id(1);
