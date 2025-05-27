@@ -245,7 +245,8 @@ join loai_dich_vu ldv on ldv.ma_loai_dich_vu = dv.ma_loai_dich_vu
 where dv.ma_dich_vu not in (
 	select ma_dich_vu from hop_dong 
 	where year(ngay_lam_hop_dong) = 2021 
-	and month(ngay_lam_hop_dong) in (1, 2, 3)
+    and month(ngay_lam_hop_dong) in (1,2,3)
+	-- and quarter(ngay_lam_hop_dong) in (1)
 );
 
 -- 7. Hiển thị thông tin ma_dich_vu, ten_dich_vu, dien_tich, so_nguoi_toi_da, chi_phi_thue, ten_loai_dich_vu 
@@ -278,10 +279,12 @@ order by thang;
 -- Kết quả hiển thị bao gồm ma_hop_dong, ngay_lam_hop_dong, ngay_ket_thuc, tien_dat_coc, 
 -- so_luong_dich_vu_di_kem (được tính dựa trên việc sum so_luong ở dich_vu_di_kem).
 select hd.ma_hop_dong, hd.ngay_lam_hop_dong, hd.ngay_ket_thuc, 
-hd.tien_dat_coc, ifnull(sum(hdct.so_luong),0)
+hd.tien_dat_coc, ifnull(sum(hdct.so_luong),0) as so_luong
 from hop_dong hd
 left join hop_dong_chi_tiet hdct on hdct.ma_hop_dong = hd.ma_hop_dong
-group by hd.ma_hop_dong;
+-- join dich_vu_di_kem dvdk on dvdk.ma_dich_vu_di_kem = hdct.ma_dich_vu_di_kem
+group by hd.ma_hop_dong
+order by hd.ma_hop_dong;
 
 -- 11.Hiển thị thông tin các dịch vụ đi kèm đã được sử dụng 
 -- bởi những khách hàng có ten_loai_khach là “Diamond” và có dia_chi ở “Vinh” hoặc “Quảng Ngãi”.
@@ -313,7 +316,6 @@ and hd.ma_dich_vu not in (
   )
 group by hd.ma_hop_dong
 ;
-
 
 -- 13.Hiển thị thông tin các Dịch vụ đi kèm được sử dụng nhiều nhất 
 -- bởi các Khách hàng đã đặt phòng. 
@@ -360,14 +362,17 @@ where year(hd.ngay_lam_hop_dong) between 2020 and 2021
 group by nv.ma_nhan_vien
 having (count(hd.ma_hop_dong)) <= 3
 order by nv.ma_nhan_vien;
--- Xóa những Nhân viên chưa từng lập được hợp đồng nào từ năm 2019 đến năm 2021.
+-- 16.Xóa những Nhân viên chưa từng lập được hợp đồng nào từ năm 2019 đến năm 2021.
+select * from hop_dong hd 
+join nhan_vien nv on nv.ma_nhan_vien = hd.ma_nhan_vien
 
--- Cập nhật thông tin những khách hàng có ten_loai_khach từ Platinum lên Diamond, chỉ cập nhật những khách hàng đã từng đặt phòng với Tổng Tiền thanh toán trong năm 2021 là lớn hơn 10.000.000 VNĐ.
+;
+-- 17.Cập nhật thông tin những khách hàng có ten_loai_khach từ Platinum lên Diamond, chỉ cập nhật những khách hàng đã từng đặt phòng với Tổng Tiền thanh toán trong năm 2021 là lớn hơn 10.000.000 VNĐ.
 
--- Xóa những khách hàng có hợp đồng trước năm 2021 (chú ý ràng buộc giữa các bảng).
+-- 18.Xóa những khách hàng có hợp đồng trước năm 2021 (chú ý ràng buộc giữa các bảng).
 
--- Cập nhật giá cho các dịch vụ đi kèm được sử dụng trên 10 lần trong năm 2020 lên gấp đôi.
+-- 19.Cập nhật giá cho các dịch vụ đi kèm được sử dụng trên 10 lần trong năm 2020 lên gấp đôi.
 
--- Hiển thị thông tin của tất cả các nhân viên và khách hàng có trong hệ thống, thông tin hiển thị bao gồm id (ma_nhan_vien, ma_khach_hang), ho_ten, email, so_dien_thoai, ngay_sinh, dia_chi.
+-- 20.Hiển thị thông tin của tất cả các nhân viên và khách hàng có trong hệ thống, thông tin hiển thị bao gồm id (ma_nhan_vien, ma_khach_hang), ho_ten, email, so_dien_thoai, ngay_sinh, dia_chi.
 
 

@@ -1,0 +1,86 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px 20px;
+    color: white;
+}
+
+/* Gộp logo + nav về bên trái */
+.left-header {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+    padding: 5px;
+}
+
+nav a.active,
+nav a:hover {
+    background-color: #555;
+    border-radius: 4px;
+}
+
+.login {
+    font-size: 14px;
+}
+
+.container {
+    display: flex;
+    padding: 20px;
+}
+.sidebar-left a {
+    display: block;
+    color: #2466b1;
+    padding: 20px;
+}
+
+
+.sidebar-left,
+.sidebar-right {
+    width: 15%;
+    padding: 20px;
+    background-color: #EFEFEFFF;
+}
+
+.content {
+    width: 70%;
+    padding: 10px 20px;
+}
+
+.ad {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 10px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+a {
+    text-decoration: none;
+}
