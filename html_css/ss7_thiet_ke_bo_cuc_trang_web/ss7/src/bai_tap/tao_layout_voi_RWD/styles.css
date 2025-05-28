@@ -1,17 +1,37 @@
-body {
+* {
+    box-sizing: border-box;
+}
+
+html, body {
     margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
 }
 
 header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #333;
     padding: 10px 20px;
     color: white;
+    z-index: 10;
 }
+
+.container {
+    display: flex;
+    height: calc(100vh - 60px); /* 100% màn hình trừ phần header */
+    margin-top: 60px;
+    overflow: hidden;
+}
+
 
 /* Gộp logo + nav về bên trái */
 .left-header {
@@ -33,54 +53,55 @@ nav a {
 
 nav a.active,
 nav a:hover {
-    background-color: #555;
+    background-color: black;
     border-radius: 4px;
 }
 
 .login {
     font-size: 14px;
+    padding-right: 100px;
 }
 
-.container {
-    display: flex;
-    padding: 20px;
-}
 .sidebar-left a {
     display: block;
     color: #2466b1;
     padding: 20px;
-}
+    text-decoration: none;
 
+}
 
 .sidebar-left,
 .sidebar-right {
     width: 15%;
-    padding: 20px;
+    text-align: center;
+    padding-top: 50px;
     background-color: #EFEFEFFF;
+    overflow-y: auto;
 }
 
 .content {
     width: 70%;
     padding: 10px 20px;
+    overflow-y: auto;
+
 }
 
 .ad {
     background-color: #f9f9f9;
     border: 1px solid #ddd;
     padding: 15px;
-    margin-bottom: 10px;
     text-align: center;
     border-radius: 5px;
+    margin: 20px;
+
 }
 
 footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
     background-color: #333;
     color: white;
     text-align: center;
     padding: 10px;
-    margin-top: 20px;
-}
-
-a {
-    text-decoration: none;
 }
