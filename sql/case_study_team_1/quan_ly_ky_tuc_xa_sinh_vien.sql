@@ -16,7 +16,9 @@ use quan_ly_ky_tuc_xa;
   
   create table loai_vi_pham(
   ma_vi_pham int primary key auto_increment,
-  ten_vi_pham varchar(20));
+  ten_vi_pham varchar(20) unique,
+  muc_phat double);
+
   
     create table muc_do_vi_pham (
   ma_muc_do_vi_pham int primary key auto_increment,
