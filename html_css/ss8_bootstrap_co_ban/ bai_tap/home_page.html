@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landing Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -30,6 +31,29 @@
             height: 500px;
             object-fit: cover;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            cursor: pointer;
+            display: none;
+            z-index: 999;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        #backToTop:hover {
+            background-color: #555;
+            transform: scale(1.1);
+        }
+
 
     </style>
 </head>
@@ -55,9 +79,6 @@
         <a href="login.html" class="btn text-white" style="background-color: #E85728FF; margin-left: 10px">
             Đăng nhập
         </a>
-
-
-
     </div>
 </header>
 
@@ -84,6 +105,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-white nav-hover" href="#">Góp ý</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white nav-hover" href="#">Hợp đồng</a>
                 </li>
             </ul>
         </div>
@@ -222,52 +246,44 @@
 <div class="row">
     <section class="py-5" style="background: linear-gradient(to bottom, #6a3093, #a044ff, #ff512f); color: white;">
         <div class="container">
-            <h2 class="text-center fw-bold mb-5" style="color: white;">SỰ KIỆN</h2>
-            <div class="row g-4 justify-content-center">
-                <!-- Card 1 -->
+            <h2 class="text-center fw-bold mb-5">SỰ KIỆN NỔI BẬT</h2>
+            <div class="row g-4">
                 <div class="col-md-4">
-                    <div class="card h-100">
-                        <img src="https://cdn.codegym.vn/wp-content/uploads/2024/11/CodeGym-to-chuc-Le-tot-nghiep-thang-10-2024.jpg"
-                             class="card-img-top" alt="Sự kiện 1" style="height: 200px; object-fit: cover;">
+                    <div class="card bg-transparent border-light text-white h-100">
+                        <img src="https://fpt.edu.vn/images/banner/event1.jpg" class="card-img-top" alt="Event 1" style="height: 180px; object-fit: cover;">
                         <div class="card-body">
-                            <h5 class="card-title">CodeGym tổ chức Lễ tốt nghiệp tháng 10/2024 - CodeGym</h5>
-                            <p class="card-text text-muted">2 tuần trước</p>
+                            <h5 class="card-title">Workshop GenAI & Ứng dụng thực tế</h5>
+                            <p class="card-text">Thời gian: 10/06/2025 - Địa điểm: Hà Nội</p>
                         </div>
                     </div>
                 </div>
-
-                <!-- Card 2 -->
                 <div class="col-md-4">
-                    <div class="card h-100">
-                        <img src="https://scontent.fsgn2-10.fna.fbcdn.net/v/t39.30808-6/481917936_1022047056500884_1719824337968591118_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_ohc=nsxSgAOwiOoQ7kNvwF_azTe&_nc_oc=AdlS1QyXrO55xd7wfpl59ATfsKzkANtSdS3DslFvOcfSBoWzb3oPiljIRb-CEX1qScc&_nc_zt=23&_nc_ht=scontent.fsgn2-10.fna&_nc_gid=ee5L9IZhVp9fnCpeXvoajw&oh=00_AfK-FQPRp5tDmWtqkPuOjqWRZdO82Tp5GNOkhvM9ojeKqQ&oe=683DD6EE"
-                             class="card-img-top" alt="Sự kiện 2" style="height: 200px; object-fit: cover;">
+                    <div class="card bg-transparent border-light text-white h-100">
+                        <img src="https://fpt.edu.vn/images/banner/event2.jpg" class="card-img-top" alt="Event 2" style="height: 180px; object-fit: cover;">
                         <div class="card-body">
-                            <h5 class="card-title">Khai giảng lớp học FullStack</h5>
-                            <p class="card-text text-muted">1 tháng trước</p>
+                            <h5 class="card-title">Cuộc thi Code Hackathon 2025</h5>
+                            <p class="card-text">Thời gian: 15/06/2025 - Địa điểm: TP. Hồ Chí Minh</p>
                         </div>
                     </div>
                 </div>
-
-                <!-- Card 3 -->
                 <div class="col-md-4">
-                    <div class="card h-100">
-                        <img src="https://channel.mediacdn.vn/2021/9/30/photo-2-1632975337484927106899.jpg"
-                             class="card-img-top" alt="Sự kiện 3" style="height: 200px; object-fit: cover;">
+                    <div class="card bg-transparent border-light text-white h-100">
+                        <img src="https://fpt.edu.vn/images/banner/event3.jpg" class="card-img-top" alt="Event 3" style="height: 180px; object-fit: cover;">
                         <div class="card-body">
-                            <h5 class="card-title">Tổ chức CodeGym Day</h5>
-                            <p class="card-text text-muted">2 tháng trước</p>
+                            <h5 class="card-title">Talkshow: Hành trình trở thành Dev quốc tế</h5>
+                            <p class="card-text">Thời gian: 20/06/2025 - Địa điểm: Đà Nẵng</p>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!-- Button -->
+            <!-- Nút xem thêm -->
             <div class="text-center mt-4">
-                <a href="#" class="btn btn-outline-light fw-bold">XEM THÊM SỰ KIỆN</a>
+                <a href="#" class="btn btn-outline-light px-4">XEM THÊM SỰ KIỆN</a>
             </div>
         </div>
     </section>
 </div>
+
 
 <!--FOOTER-->
 <footer class="bg-white border-top pt-3 pb-4">
@@ -304,6 +320,7 @@
     </div>
 </footer>
 
+<button id="backToTop" title="Lên đầu trang">↑</button>
 
 </body>
 
@@ -323,5 +340,25 @@
         });
     });
 </script>
+<script>
+    const backToTopBtn = document.getElementById("backToTop");
+
+    window.onscroll = function () {
+        if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+            backToTopBtn.style.display = "block";
+        } else {
+            backToTopBtn.style.display = "none";
+        }
+    };
+
+    backToTopBtn.addEventListener("click", function () {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+</script>
+
+
 
 </html>
