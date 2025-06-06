@@ -189,3 +189,4 @@ INSERT INTO bien_ban_vi_pham (ma_sinh_vien_vi_pham, ma_loai_vi_pham, ma_muc_do_v
 
 select * from tai_khoan where user_name ='admin' and password = 'admin123';
 select * from vai_tro;
+select * from sinh_vien;
