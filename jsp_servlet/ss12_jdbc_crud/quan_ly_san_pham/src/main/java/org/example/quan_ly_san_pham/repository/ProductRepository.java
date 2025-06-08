@@ -24,12 +24,18 @@ public class ProductRepository implements IProductRepository{
             "    id_loai_san_pham = ?\n" +
             "where ma_san_pham = ?;";
     private final String FIND_BY_ID = "select * from san_pham where ma_san_pham = ?;\n";
-    private final String FIND_BY_NAME = "select * from san_pham where ten_san_pham like ?;\n";
+    private final String FIND_BY_NAME = "SELECT sp.ma_san_pham,sp.ten_san_pham,sp.gia_san_pham,lsp.ten_loai\n" +
+            "FROM san_pham sp\n" +
+            "JOIN loai_san_pham lsp ON sp.id_loai_san_pham = lsp.id_loai_san_pham\n" +
+            "WHERE sp.ten_san_pham LIKE ?;";
     private final String FIND_BY_NAME_AND_CATEGORY = "SELECT sp.ma_san_pham,sp.ten_san_pham,sp.gia_san_pham,lsp.ten_loai\n" +
             "FROM san_pham sp\n" +
             "JOIN loai_san_pham lsp ON sp.id_loai_san_pham = lsp.id_loai_san_pham\n" +
             "WHERE sp.ten_san_pham LIKE ? AND lsp.ten_loai LIKE ?;";
-
+    private final String FIND_BY_CATEGORY = "SELECT sp.ma_san_pham,sp.ten_san_pham,sp.gia_san_pham,lsp.ten_loai\n" +
+            "FROM san_pham sp\n" +
+            "JOIN loai_san_pham lsp ON sp.id_loai_san_pham = lsp.id_loai_san_pham\n" +
+            "WHERE lsp.ten_loai LIKE ?;";
     @Override
     public List<ProductDTO> findAll() {
         List<ProductDTO> productDTOList = new ArrayList<>();
@@ -158,4 +164,24 @@ public class ProductRepository implements IProductRepository{
         return productDTOList;
 
     }
+
+    @Override
+    public List<ProductDTO> searchByCategory(String categoryName) {
+        List<ProductDTO> productDTOList = new ArrayList<>();
+        try (Connection connection = BaseRepository.getConnectDB();
+             PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_CATEGORY);) {
+            preparedStatement.setString(1,"%" + categoryName + "%");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                String id = resultSet.getString("ma_san_pham");
+                String name = resultSet.getString("ten_san_pham");
+                double price = Double.parseDouble(resultSet.getString("gia_san_pham"));
+                String category = resultSet.getString("ten_loai");
+                ProductDTO productDTO = new ProductDTO(id,name,price,category);
+                productDTOList.add(productDTO);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return productDTOList;    }
 }

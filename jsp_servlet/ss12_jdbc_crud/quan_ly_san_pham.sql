@@ -59,13 +59,17 @@ set ten_san_pham = 'a',
     id_loai_san_pham = 4
 where ma_san_pham = 'SP010';
 
-select * from san_pham where ten_san_pham like '%Sony%';
-SELECT sp.ma_san_pham,sp.ten_san_pham,sp.gia_san_pham,sp.mo_ta_san_pham,sp.nha_san_xuat,lsp.ten_loai
+SELECT sp.ma_san_pham,sp.ten_san_pham,sp.gia_san_pham,lsp.ten_loai
+FROM san_pham sp
+JOIN loai_san_pham lsp ON sp.id_loai_san_pham = lsp.id_loai_san_pham
+WHERE sp.ten_san_pham LIKE '%Mac%';
+
+SELECT sp.ma_san_pham,sp.ten_san_pham,sp.gia_san_pham,lsp.ten_loai
 FROM san_pham sp
 JOIN loai_san_pham lsp ON sp.id_loai_san_pham = lsp.id_loai_san_pham
 WHERE sp.ten_san_pham LIKE '%%' AND lsp.ten_loai LIKE '%l%';
 
-SELECT sp.ma_san_pham,sp.ten_san_pham,sp.gia_san_pham,sp.mo_ta_san_pham,sp.nha_san_xuat,lsp.ten_loai
+SELECT sp.ma_san_pham,sp.ten_san_pham,sp.gia_san_pham,lsp.ten_loai
 FROM san_pham sp
 JOIN loai_san_pham lsp ON sp.id_loai_san_pham = lsp.id_loai_san_pham
 WHERE lsp.ten_loai LIKE '%l%';

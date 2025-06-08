@@ -23,19 +23,29 @@
         <div class="mb-3">
             <label class="form-label">Tên sản phẩm</label>
             <input type="text" name="updateName" value="${product.productName}" class="form-control" required>
+            <c:if test="${errors['updateName'] != null}">
+                <div class="text-danger">${errors['updateName']}</div>
+            </c:if>
         </div>
+
         <div class="mb-3">
             <label class="form-label">Giá sản phẩm</label>
             <input type="number" name="updatePrice" value="${product.productPrice}" class="form-control" required>
+            <c:if test="${errors['updatePrice'] != null}">
+                <div class="text-danger">${errors['updatePrice']}</div>
+            </c:if>
         </div>
+
         <div class="mb-3">
             <label class="form-label">Mô tả sản phẩm</label>
             <input type="text" name="updateDescription" value="${product.productDescription}" class="form-control">
         </div>
+
         <div class="mb-3">
             <label class="form-label">Nhà sản xuất</label>
             <input type="text" name="updateManufacture" value="${product.manufacture}" class="form-control">
         </div>
+
         <div class="mb-3">
             <label class="form-label">Loại sản phẩm</label>
             <select name="updateTypeProductID" class="form-select" required>
@@ -46,8 +56,10 @@
                             ${type.categoryName}
                     </option>
                 </c:forEach>
-
             </select>
+            <c:if test="${errors['updateTypeProductID'] != null}">
+                <div class="text-danger">${errors['updateTypeProductID']}</div>
+            </c:if>
         </div>
         <div class="text-center">
             <button type="submit" class="btn btn-primary">Cập nhật</button>

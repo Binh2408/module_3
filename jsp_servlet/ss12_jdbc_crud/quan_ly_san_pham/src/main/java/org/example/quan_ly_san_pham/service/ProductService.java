@@ -25,6 +25,11 @@ public class ProductService implements IProductService{
     }
 
     @Override
+    public boolean existsById(String productID) {
+        return productRepository.findById(productID) != null;
+    }
+
+    @Override
     public void update(String id, Product product) {
         productRepository.update(id,product);
     }
@@ -42,6 +47,11 @@ public class ProductService implements IProductService{
     @Override
     public List<ProductDTO> searchByNameAndCategory(String productName, String categoryName) {
         return productRepository.searchByNameAndCategory(productName,categoryName);
+    }
+
+    @Override
+    public List<ProductDTO> searchByCategory(String categoryName) {
+        return productRepository.searchByCategory(categoryName);
     }
 
 
